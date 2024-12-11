@@ -1,0 +1,15 @@
+body {
+
+}
+#fst-hint {
+
+}
+#ply {
+    background-color: aquamarine;
+    width: fit-content;
+}
+.d-log-box {
+    width: 200px;
+    height: 50px;
+    border: 2px solid black;
+}
