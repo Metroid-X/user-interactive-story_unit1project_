@@ -3,23 +3,26 @@ body {
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    margin: 20px 0;
 }
 
 div {
     display: flex;
     border: 2px solid black;
-    
 }
 
 #game-box {
     flex-direction: column;
-    width: 700px;
-    border-color: slateblue;
+    width: 720px;
+    border-width: 4px;
+    border-color: rgb(171, 161, 132) rgb(171, 161, 132) rgb(55, 50, 34) rgb(55, 50, 34);
+    background-color: rgb(134, 119, 100);
     align-items: center;
+    padding: 20px;
 }
 
 #arena {
-    width: 700px;
+    width: 720px;
     flex-direction: row;
     justify-content: space-between;
     border-color: greenyellow;
@@ -27,11 +30,13 @@ div {
     background-repeat: no-repeat;
     background-color: olivedrab;
     background-image: linear-gradient(to bottom, midnightblue,skyblue);
-    padding: 20px;
+    padding: 20px 0;
 }
 
 .player-box {
     flex-direction: column;
+    margin: 0 20px;
+    z-index: 10;
 }
 
 .hp-box {
@@ -45,6 +50,7 @@ div {
     height: 10px;
     margin: 2px;
     background-color: darkred;
+    border-radius: 3px;
 }
 
 .hp-text {
@@ -57,7 +63,6 @@ div {
 .grass {
     position: absolute;
     transform: translate(0, 250px);
-    
 }
 
 .hp-val {
@@ -65,11 +70,13 @@ div {
     height: inherit;
     border: none;
     width: 100%;
+    border-radius: 1px;
 }
 
 strong {
     font-weight: 900;
     color:rgb(44, 83, 7);
+    z-index: 9;
 }
 
 #p1-box {
@@ -101,18 +108,26 @@ img {
     pointer-events: none;
 }
 
-
+.fiery {
+    color: firebrick;
+}
 
 #text-boxes {
     border-color:darkblue;
     flex-flow: row, wrap;
-    width: 700px;
+    width: 720px;
     height: 200px;
 }
 
 button {
-    width: 350px;
+    width: 360px;
     height: 100px;
+    display:flex;
+    justify-content: center;
+    padding: 0;
+    div {
+        border-width: 0;
+    }
 }
 #op-1 {
     position: absolute;
@@ -120,15 +135,19 @@ button {
 }
 #op-2 {
     position: absolute;
-    align-self:flex-end;
+    align-self: flex-start;
+    transform: translate(100%,0);
 }
 #op-3 {
     position: absolute;
-    align-self: flex-start;
-    transform: translate(100%,0);
+    align-self:flex-end;
 }
 #op-4 {
     position: absolute;
     align-self: flex-end;
     transform: translate(100%,0);
+}
+
+#d-log-box {
+
 }
