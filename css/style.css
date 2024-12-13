@@ -25,7 +25,7 @@ div {
     width: 720px;
     flex-direction: row;
     justify-content: space-between;
-    border-color: greenyellow;
+    border-color: black;
     background-size: 100% 80%;
     background-repeat: no-repeat;
     background-color: olivedrab;
@@ -113,10 +113,11 @@ img {
 }
 
 #text-boxes {
-    border-color:darkblue;
-    flex-flow: row, wrap;
+    border-color:black;
+    flex-direction: column;
     width: 720px;
-    height: 200px;
+    height: fit-content;
+    border-top: 0;
 }
 
 button {
@@ -149,5 +150,7 @@ button {
 }
 
 #d-log-box {
-
+    border-width: 0 0 2px 0;
+    height: 75px;
+    width: 100%;
 }

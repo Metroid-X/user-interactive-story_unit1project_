@@ -38,72 +38,74 @@
                 <img nosave id="p2" src="./p2/p2-sprite-idle.png" alt="player 2">
             </div>
         </div>
-        <div style="border-width: 3px; height: 75px; width: 100%; margin: 10px; background-color: rgb(147, 164, 180); border-color: slategrey slategrey rgb(181, 210, 219) rgb(181, 210, 219);"></div>
         <div id="text-boxes">
-            <button id="op-1">
-                <h2 style="margin: 0;">GREATSLASH</h2>
-                <p style="margin: 0; align-self: center; position: absolute; width: 95%; text-align:justify;">
-                    Charges a powerful attack for one turn, then uses the next turn to unleash the attack.
-                </p>
-                <p style="margin: 0; align-self: flex-end; position: absolute; width: 95%; text-align: center; display: flex; flex-direction: row; justify-content: space-between;">
-                    <span class="fiery">❚</span>
-                    <strong class="fiery" style="width: 140px;"> Atk : 30-60 </strong>
-                    <span class="fiery">❚</span>
-                    <strong class="fiery" style="width: 140px;"> Acc : &ThickSpace; 80</strong>
-                    <span class="fiery">❚</span>
-                    <strong class="fiery" style="width: 140px;"> Rsk : &ThickSpace; 90 </strong>
-                    <span class="fiery">❚</span>
-                </p>
-                <div style="height: 100%; width: 100%; position: absolute;"></div>
-            </button>
-            <button id="op-2">
-                <h2 style="margin: 0;">PARRY</h2>
-                <p style="margin: 0; align-self: center; position: absolute; width: 95%; text-align:justify;">
-                    Deals no damage, but negates 50% of damage taken this turn, leaving the foe stunned; stuns the user on fail.
-                </p>
-                <p style="margin: 0; align-self: flex-end; position: absolute; width: 95%; text-align: center; display: flex; flex-direction: row; justify-content: space-between;">
-                    <span class="fiery">❚</span>
-                    <strong class="fiery" style="width: 140px;"> Def : &ThickSpace; 50% </strong>
-                    <span class="fiery">❚</span>
-                    <strong class="fiery" style="width: 140px;"> Acc : &ThickSpace; ── </strong>
-                    <span class="fiery">❚</span>
-                    <strong class="fiery" style="width: 140px;"> Rsk : &ThickSpace; 50% </strong>
-                    <span class="fiery">❚</span>
-                </p>
-                <div style="height: 100%; width: 100%; position: absolute;"></div>
-            </button>
-            <button id="op-3">
-                <h2 style="margin: 0;">BASIC SLASH</h2>
-                <p style="margin: 0; align-self: center; position: absolute; width: 95%; text-align:justify;">
-                    Does a basic sword slash against the foe, dealing decent damage.
-                </p>
-                <p style="margin: 0; align-self: flex-end; position: absolute; width: 95%; text-align: center; display: flex; flex-direction: row; justify-content: space-between;">
-                    <span class="fiery">❚</span>
-                    <strong class="fiery" style="width: 140px;"> Atk : 15-30</strong>
-                    <span class="fiery">❚</span>
-                    <strong class="fiery" style="width: 140px;"> Acc : &ThickSpace; 90 </strong>
-                    <span class="fiery">❚</span>
-                    <strong class="fiery" style="width: 140px;"> Rsk : &ThickSpace; 90 </strong>
-                    <span class="fiery">❚</span>
-                </p>
-                <div style="height: 100%; width: 100%; position: absolute;"></div>
-            </button>
-            <button id="op-4">
-                <h2 style="margin: 0;">SHEILD BASH</h2>
-                <p style="margin: 0; align-self: center; position: absolute; width: 95%; text-align:justify;">
-                    Bash the foe with your sheild; deals recoil damage and stuns foe if used on same turn after the foe's attack.
-                </p>
-                <p style="margin: 0; align-self: flex-end; position: absolute; width: 95%; text-align: center; display: flex; flex-direction: row; justify-content: space-between;">
-                    <span class="fiery">❚</span>
-                    <strong class="fiery" style="width: 140px;"> Atk : 20-40</strong>
-                    <span class="fiery">❚</span>
-                    <strong class="fiery" style="width: 140px;"> Acc : &ThickSpace; 90 </strong>
-                    <span class="fiery">❚</span>
-                    <strong class="fiery" style="width: 140px;"> Rsk : 50%Atk </strong>
-                    <span class="fiery">❚</span>
-                </p>
-                <div style="height: 100%; width: 100%; position: absolute;"></div>
-            </button>
+            <div id="d-log-box"></div>
+            <div style="border-width: 0; width: 100%; margin: 0; height: 200px;">
+                <button id="op-1">
+                    <h2 style="margin: 0;">GREATSLASH</h2>
+                    <p style="margin: 0; align-self: center; position: absolute; width: 95%; text-align:justify;">
+                        Charges a powerful attack for one turn, then uses the next turn to unleash the attack.
+                    </p>
+                    <p style="margin: 0; align-self: flex-end; position: absolute; width: 95%; text-align: center; display: flex; flex-direction: row; justify-content: space-between;">
+                        <span class="fiery">❚</span>
+                        <strong class="fiery" style="width: 140px;"> Atk : 30-60 </strong>
+                        <span class="fiery">❚</span>
+                        <strong class="fiery" style="width: 140px;"> Acc : &ThickSpace; 80</strong>
+                        <span class="fiery">❚</span>
+                        <strong class="fiery" style="width: 140px;"> Rsk : &ThickSpace; 90 </strong>
+                        <span class="fiery">❚</span>
+                    </p>
+                    <div style="height: 100%; width: 100%; position: absolute;"></div>
+                </button>
+                <button id="op-2">
+                    <h2 style="margin: 0;">PARRY</h2>
+                    <p style="margin: 0; align-self: center; position: absolute; width: 95%; text-align:justify;">
+                        Deals no damage, but negates 50% of damage taken this turn, leaving the foe stunned; stuns the user on fail.
+                    </p>
+                    <p style="margin: 0; align-self: flex-end; position: absolute; width: 95%; text-align: center; display: flex; flex-direction: row; justify-content: space-between;">
+                        <span class="fiery">❚</span>
+                        <strong class="fiery" style="width: 140px;"> Def : &ThickSpace; 50% </strong>
+                        <span class="fiery">❚</span>
+                        <strong class="fiery" style="width: 140px;"> Acc : &ThickSpace; ── </strong>
+                        <span class="fiery">❚</span>
+                        <strong class="fiery" style="width: 140px;"> Rsk : &ThickSpace; 50% </strong>
+                        <span class="fiery">❚</span>
+                    </p>
+                    <div style="height: 100%; width: 100%; position: absolute;"></div>
+                </button>
+                <button id="op-3">
+                    <h2 style="margin: 0;">BASIC SLASH</h2>
+                    <p style="margin: 0; align-self: center; position: absolute; width: 95%; text-align:justify;">
+                        Does a basic sword slash against the foe, dealing decent damage.
+                    </p>
+                    <p style="margin: 0; align-self: flex-end; position: absolute; width: 95%; text-align: center; display: flex; flex-direction: row; justify-content: space-between;">
+                        <span class="fiery">❚</span>
+                        <strong class="fiery" style="width: 140px;"> Atk : 15-30</strong>
+                        <span class="fiery">❚</span>
+                        <strong class="fiery" style="width: 140px;"> Acc : &ThickSpace; 90 </strong>
+                        <span class="fiery">❚</span>
+                        <strong class="fiery" style="width: 140px;"> Rsk : &ThickSpace; 90 </strong>
+                        <span class="fiery">❚</span>
+                    </p>
+                    <div style="height: 100%; width: 100%; position: absolute;"></div>
+                </button>
+                <button id="op-4">
+                    <h2 style="margin: 0;">SHEILD BASH</h2>
+                    <p style="margin: 0; align-self: center; position: absolute; width: 95%; text-align:justify;">
+                        Bash the foe with your sheild; deals recoil damage and stuns foe if used on same turn after the foe's attack.
+                    </p>
+                    <p style="margin: 0; align-self: flex-end; position: absolute; width: 95%; text-align: center; display: flex; flex-direction: row; justify-content: space-between;">
+                        <span class="fiery">❚</span>
+                        <strong class="fiery" style="width: 140px;"> Atk : 20-40</strong>
+                        <span class="fiery">❚</span>
+                        <strong class="fiery" style="width: 140px;"> Acc : &ThickSpace; 90 </strong>
+                        <span class="fiery">❚</span>
+                        <strong class="fiery" style="width: 140px;"> Rsk : 50%Atk </strong>
+                        <span class="fiery">❚</span>
+                    </p>
+                    <div style="height: 100%; width: 100%; position: absolute;"></div>
+                </button>
+            </div>
         </div>
     </div>
 </body>

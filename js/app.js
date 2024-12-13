@@ -28,5 +28,7 @@ gameElem.addEventListener('click',(e)=>{
                 console.log(4)
                 break;
         }
+    }else if(evTarg.id=='d-log-box'){
+        console.log('dialogue')
     }
 })
