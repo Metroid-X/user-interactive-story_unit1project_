@@ -5,17 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
     <script src="./js/app.js" defer></script>
-    <title>Common Sense</title>
+    <title></title>
 </head>
 <body>
-    <div id="worldmap"></div>
-    <h2 id="welcome">Welcome to the Comment Section!</h2>
-    <div id="cmnt-sect">
-        <h2></h2>
-        Why don't you share your thoughts?
-
-        <div id="ply">&lsaquo;&lpar;&ThinSpace;ᵔ&ThinSpace;.ᵔ&rpar;</div>
-
+    <div id="game-box">
+        <span class="grass">
+            <strong style="position: absolute; transform: translate(-180px,15px);"><em>lll</em></strong>
+            <strong style="position: absolute; transform: translate(200px,25px);"><em>lll</em></strong>
+            <strong style="position: absolute; transform: translate(20px,0px);"><em>lll</em></strong>
+            <strong style="position: absolute; transform: translate(-60px,5px);"><em>lll</em></strong>
+            <strong style="position: absolute; transform: translate(-100px,-10px);"><em>lll</em></strong>
+            <strong style="position: absolute; transform: translate(100px,10px);"><em>lll</em></strong>
+            <strong style="position: absolute; transform: translate(140px,-10px);"><em>lll</em></strong>
+            <strong style="position: absolute; transform: translate(320px,-10px);"><em>lll</em></strong>
+            <strong style="position: absolute; transform: translate(-315px,20px);"><em>lll</em></strong>
+            <strong style="position: absolute; transform: translate(330px,20px);"><em>lll</em></strong>
+            <strong style="position: absolute; transform: translate(-340px,0px);"><em>lll</em></strong>
+        </span>
+        <div id="arena">
+            <div id="p1-box" class="player-box">
+                <div class="hp-box">
+                    <div class="hp-bar"><div class="hp-val"></div></div>
+                    <p class="hp-text"><span id="p1-hp">&ThickSpace;&ThickSpace;400/400</span><span>P1&ThickSpace;&ThickSpace;</span></p>
+                </div>
+                <img nosave id="p1" src="./p1/p1-sprite-idle.png" alt="player 1">
+            </div>
+            <div id="p2-box" class="player-box">
+                <div class="hp-box">
+                    <div class="hp-bar"><div class="hp-val"></div></div>
+                    <p class="hp-text"><span>&ThickSpace;&ThickSpace;P2</span><span id="p2-hp">400/400&ThickSpace;&ThickSpace;</span></p>
+                </div>
+                <img nosave id="p2" src="./p2/p2-sprite-idle.png" alt="player 2">
+            </div>
+        </div>
+        
+        <div id="text-boxes">
+            <button id="op-1"></button>
+            <button id="op-2"></button>
+            <button id="op-3"></button>
+            <button id="op-4"></button>
+        </div>
     </div>
 </body>
 </html>

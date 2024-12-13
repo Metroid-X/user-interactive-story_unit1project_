@@ -1,15 +1,134 @@
 body {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
 
-}
-#fst-hint {
-
-}
-#ply {
-    background-color: aquamarine;
-    width: fit-content;
-}
-.d-log-box {
-    width: 200px;
-    height: 50px;
+div {
+    display: flex;
     border: 2px solid black;
+    
+}
+
+#game-box {
+    flex-direction: column;
+    width: 700px;
+    border-color: slateblue;
+    align-items: center;
+}
+
+#arena {
+    width: 700px;
+    flex-direction: row;
+    justify-content: space-between;
+    border-color: greenyellow;
+    background-size: 100% 80%;
+    background-repeat: no-repeat;
+    background-color: olivedrab;
+    background-image: linear-gradient(to bottom, midnightblue,skyblue);
+    padding: 20px;
+}
+
+.player-box {
+    flex-direction: column;
+}
+
+.hp-box {
+    flex-direction: column;
+    background-color:darkseagreen;
+    border-color: aquamarine aquamarine seagreen seagreen;
+}
+
+.hp-bar {
+    width: 200px;
+    height: 10px;
+    margin: 2px;
+    background-color: darkred;
+}
+
+.hp-text {
+    margin: 0;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.grass {
+    position: absolute;
+    transform: translate(0, 250px);
+    
+}
+
+.hp-val {
+    flex-direction: row;
+    height: inherit;
+    border: none;
+    width: 100%;
+}
+
+strong {
+    font-weight: 900;
+    color:rgb(44, 83, 7);
+}
+
+#p1-box {
+    border-color:rgba(0, 255, 255, 0.0);
+    .hp-bar {
+        justify-content: start;
+    }
+    .hp-val {
+        background-color: chartreuse;
+    }
+}
+
+#p2-box {
+    border-color:rgba(220, 20, 60, 0.0);
+    .hp-bar {
+        justify-content: end;
+    }
+    .hp-val {
+        background-color: darkmagenta;
+    }
+}
+
+span {
+    user-select: none;
+}
+
+img {
+    user-select: none;
+    pointer-events: none;
+}
+
+
+
+#text-boxes {
+    border-color:darkblue;
+    flex-flow: row, wrap;
+    width: 700px;
+    height: 200px;
+}
+
+button {
+    width: 350px;
+    height: 100px;
+}
+#op-1 {
+    position: absolute;
+    align-self: flex-start;
+}
+#op-2 {
+    position: absolute;
+    align-self:flex-end;
+}
+#op-3 {
+    position: absolute;
+    align-self: flex-start;
+    transform: translate(100%,0);
+}
+#op-4 {
+    position: absolute;
+    align-self: flex-end;
+    transform: translate(100%,0);
 }
