@@ -13,12 +13,15 @@ div {
 
 #game-box {
     flex-direction: column;
+    justify-content: space-between;
     width: 720px;
+    height: 600px;
     border-width: 4px;
     border-color: rgb(171, 161, 132) rgb(171, 161, 132) rgb(55, 50, 34) rgb(55, 50, 34);
     background-color: rgb(134, 119, 100);
     align-items: center;
     padding: 20px;
+    user-select: none;
 }
 
 #arena {
@@ -69,7 +72,7 @@ div {
     flex-direction: row;
     height: inherit;
     border: none;
-    width: 100%;
+    
     border-radius: 1px;
 }
 
@@ -99,12 +102,8 @@ strong {
     }
 }
 
-span {
-    user-select: none;
-}
 
 img {
-    user-select: none;
     pointer-events: none;
 }
 
@@ -113,44 +112,105 @@ img {
 }
 
 #text-boxes {
+    margin: 0;
     border-color:black;
-    flex-direction: column;
+    flex-flow: row wrap;
+    /* justify-content: space-between; */
     width: 720px;
-    height: fit-content;
-    border-top: 0;
+    height: 200px;
+    padding: 0px;
 }
 
 button {
-    width: 360px;
-    height: 100px;
+    width: 354px;
+    height: 92px;
     display:flex;
-    justify-content: center;
-    padding: 0;
-    div {
-        border-width: 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2px 0;
+    margin: 0;
+    border-width: 2px;
+    border-radius: 15px;
+    background-color: hsl(35, 27%, 58%);
+    
+}
+button:hover {
+    background-color:hsl(35 22 46);
+    background-color:hsl(35 25% 61);
+    p {
+        color: rgb(55, 50, 34);
+    }
+    h2 {
+        color:rgb(55, 50, 34);
+    }
+    .fiery {
+        color: rgb(199, 41, 41);
     }
 }
-#op-1 {
-    position: absolute;
-    align-self: flex-start;
+button:active {
+    background-color:hsl(35 25 61);
+    background-color:hsl(35, 22%, 46%);
+    p {
+        color: beige;
+    }
+    h2 {
+        color: beige;
+    }
+    .fiery {
+        color: rgb(233, 36, 36);
+    }
 }
-#op-2 {
-    position: absolute;
-    align-self: flex-start;
-    transform: translate(100%,0);
+
+#op-1{
+    margin: 4px 2px 2px 4px;
 }
-#op-3 {
-    position: absolute;
-    align-self:flex-end;
+
+#op-2{
+    margin: 4px 4px 2px 2px;
 }
-#op-4 {
-    position: absolute;
-    align-self: flex-end;
-    transform: translate(100%,0);
+
+#op-3{
+    margin: 2px 2px 4px 4px;
+}
+
+#op-4{
+    margin: 2px 4px 4px 2px;
 }
 
 #d-log-box {
-    border-width: 0 0 2px 0;
-    height: 75px;
-    width: 100%;
+    border-width: 2px;
+    background-color: rgb(134, 119, 100);
+    width: 700px;
+    padding: 10px;
+    font-weight: bold;
+    position: absolute;
+    transform: translate( 0px, 298px);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    .first-line {
+        align-self: flex-start;
+        margin: 0;
+    }
+    .mid-line {
+        margin: 0
+    }
+    .last-line {
+        align-self: flex-end;
+        margin: 0
+    }
+}
+.d-log-box-a {
+    height: 278px;
+    h1 {
+        position: absolute;
+        transform-origin: translate(50%);
+        transform: translate(0, 100px);
+    }
+}
+.d-log-box-b {
+    height: 76px;
 }

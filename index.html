@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
     <script src="./js/app.js" defer></script>
-    <title></title>
+    <title>A Justifight!</title>
 </head>
 <body>
     <div id="game-box">
@@ -26,27 +26,30 @@
             <div id="p1-box" class="player-box">
                 <div class="hp-box">
                     <div class="hp-bar"><div class="hp-val"></div></div>
-                    <p class="hp-text"><span id="p1-hp">&ThickSpace;&ThickSpace;HP: 400/400</span><span>P1&ThickSpace;&ThickSpace;</span></p>
+                    <p class="hp-text"><span>&ThinSpace;P1 <span1 style="margin: 0 0 0 85px;">HP:</span1></span></span><span3 id="p1-hp">400/400&ThinSpace;</span3></p>
                 </div>
                 <img nosave id="p1" src="./p1/p1-sprite-idle.png" alt="player 1">
             </div>
             <div id="p2-box" class="player-box">
                 <div class="hp-box">
                     <div class="hp-bar"><div class="hp-val"></div></div>
-                    <p class="hp-text"><span>&ThickSpace;&ThickSpace;P2</span><span id="p2-hp">HP: 400/400&ThickSpace;&ThickSpace;</span></p>
+                    <p class="hp-text"><span>&ThinSpace;P2 <span1 style="margin: 0 0 0 85px;">HP:</span1></span><span3 id="p2-hp">400/400&ThinSpace;</span3></p>
                 </div>
                 <img nosave id="p2" src="./p2/p2-sprite-idle.png" alt="player 2">
             </div>
         </div>
+        <div id="d-log-box" class="d-log-box-a">
+            <h1>CLICK TO START</h1>
+        </div>
         <div id="text-boxes">
-            <div id="d-log-box"></div>
-            <div style="border-width: 0; width: 100%; margin: 0; height: 200px;">
+            
+            <!-- <div style="border-width: 0; width: 100%; margin: 0; height: 200px;"> -->
                 <button id="op-1">
                     <h2 style="margin: 0;">GREATSLASH</h2>
-                    <p style="margin: 0; align-self: center; position: absolute; width: 95%; text-align:justify;">
+                    <p style="margin: 0; width: 95%; text-align:justify;">
                         Charges a powerful attack for one turn, then uses the next turn to unleash the attack.
                     </p>
-                    <p style="margin: 0; align-self: flex-end; position: absolute; width: 95%; text-align: center; display: flex; flex-direction: row; justify-content: space-between;">
+                    <p style="margin: 0; width: 95%; text-align: center; display: flex; flex-direction: row; justify-content: space-between;">
                         <span class="fiery">❚</span>
                         <strong class="fiery" style="width: 140px;"> Atk : 30-60 </strong>
                         <span class="fiery">❚</span>
@@ -55,14 +58,13 @@
                         <strong class="fiery" style="width: 140px;"> Rsk : &ThickSpace; 90 </strong>
                         <span class="fiery">❚</span>
                     </p>
-                    <div style="height: 100%; width: 100%; position: absolute;"></div>
                 </button>
                 <button id="op-2">
                     <h2 style="margin: 0;">PARRY</h2>
-                    <p style="margin: 0; align-self: center; position: absolute; width: 95%; text-align:justify;">
+                    <p style="margin: 0; width: 95%; text-align:justify;">
                         Deals no damage, but negates 50% of damage taken this turn, leaving the foe stunned; stuns the user on fail.
                     </p>
-                    <p style="margin: 0; align-self: flex-end; position: absolute; width: 95%; text-align: center; display: flex; flex-direction: row; justify-content: space-between;">
+                    <p style="margin: 0; width: 95%; text-align: center; display: flex; flex-direction: row; justify-content: space-between;">
                         <span class="fiery">❚</span>
                         <strong class="fiery" style="width: 140px;"> Def : &ThickSpace; 50% </strong>
                         <span class="fiery">❚</span>
@@ -71,14 +73,13 @@
                         <strong class="fiery" style="width: 140px;"> Rsk : &ThickSpace; 50% </strong>
                         <span class="fiery">❚</span>
                     </p>
-                    <div style="height: 100%; width: 100%; position: absolute;"></div>
                 </button>
                 <button id="op-3">
                     <h2 style="margin: 0;">BASIC SLASH</h2>
-                    <p style="margin: 0; align-self: center; position: absolute; width: 95%; text-align:justify;">
+                    <p style="margin: 0; width: 95%; text-align:justify;">
                         Does a basic sword slash against the foe, dealing decent damage.
                     </p>
-                    <p style="margin: 0; align-self: flex-end; position: absolute; width: 95%; text-align: center; display: flex; flex-direction: row; justify-content: space-between;">
+                    <p style="margin: 0; width: 95%; text-align: center; display: flex; flex-direction: row; justify-content: space-between;">
                         <span class="fiery">❚</span>
                         <strong class="fiery" style="width: 140px;"> Atk : 15-30</strong>
                         <span class="fiery">❚</span>
@@ -87,14 +88,13 @@
                         <strong class="fiery" style="width: 140px;"> Rsk : &ThickSpace; 90 </strong>
                         <span class="fiery">❚</span>
                     </p>
-                    <div style="height: 100%; width: 100%; position: absolute;"></div>
                 </button>
                 <button id="op-4">
                     <h2 style="margin: 0;">SHEILD BASH</h2>
-                    <p style="margin: 0; align-self: center; position: absolute; width: 95%; text-align:justify;">
+                    <p style="margin: 0; width: 95%; text-align:justify;">
                         Bash the foe with your sheild; deals recoil damage and stuns foe if used on same turn after the foe's attack.
                     </p>
-                    <p style="margin: 0; align-self: flex-end; position: absolute; width: 95%; text-align: center; display: flex; flex-direction: row; justify-content: space-between;">
+                    <p style="margin: 0; width: 95%; text-align: center; display: flex; flex-direction: row; justify-content: space-between;">
                         <span class="fiery">❚</span>
                         <strong class="fiery" style="width: 140px;"> Atk : 20-40</strong>
                         <span class="fiery">❚</span>
@@ -103,9 +103,8 @@
                         <strong class="fiery" style="width: 140px;"> Rsk : 50%Atk </strong>
                         <span class="fiery">❚</span>
                     </p>
-                    <div style="height: 100%; width: 100%; position: absolute;"></div>
                 </button>
-            </div>
+            <!-- </div> -->
         </div>
     </div>
 </body>
