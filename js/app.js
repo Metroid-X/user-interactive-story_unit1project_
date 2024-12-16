@@ -271,14 +271,15 @@ gameElem.addEventListener('click',(e)=>{
                         }
                         if(turnState==2&&pData.p2.state===actionStates.stunned){
                             dLogElem.setAttribute('class',dLogClass.animate);
+                            turnState++
                         }
                         console.log('end step '+(turnState)+' in turn cycle')
                 }
                 
             }else{
-                let brOrNot = ['','<br>']
+                let brOrNot = ['','<br><br>']
                 playerTurn=0;
-                
+                let dmg;
                 switch(turnState){
                     case 3:
                         dLogElem.querySelector('.mid-line').innerHTML='';
@@ -288,35 +289,57 @@ gameElem.addEventListener('click',(e)=>{
                             switch(tmpPLY.state){
                                 case actionStates.atk:
                                     if(tmpNME.state===actionStates.parry){
-                                        tmpNME.hp.val-=randInt(7.5,15);
+                                        dmg=randInt(7.5,15);
                                     }else{
-                                        tmpNME.hp.val-=randInt(15,30);
+                                        dmg=randInt(15,30);3
                                     }
+                                    tmpNME.hp.val-=dmg
                                     break;
                                 case actionStates.chg1:
-                                    dLogElem.querySelector('.mid-line').innerHTML+=`${brOrNot[i]}${tmpPLY.name} began preparing a mighty blow.`;
+                                    dLogElem.querySelector('.mid-line').innerHTML+=`${brOrNot[i]}${tmpPLY.name} began preparing a mighty blow...`;
 
                                     break;
                                 case actionStates.chg2:
-                                    dLogElem.querySelector('.mid-line').innerHTML+=`${brOrNot[i]}${tmpPLY.name} unleashed a GREATSLASH`;
+                                    dLogElem.querySelector('.mid-line').innerHTML+=`${brOrNot[i]}${tmpPLY.name} unleashed a Greatslash!!`;
 
                                     if(tmpNME.state===actionStates.parry){
-                                        tmpNME.hp.val-=randInt(15,30);
+                                        dmg=randInt(15,30);
                                     }else{
-                                        tmpNME.hp.val-=randInt(30,60);
+                                        dmg=randInt(30,60);
                                     }
+                                    tmpNME.hp.val-=dmg
                                     break;
                                 case actionStates.parry:
-                                    if(tmpNME.state===actionStates.parry){
-                                    }else if(tmpNME.state===actionStates.chg1){
+                                    
+                                    
+                                    if(tmpNME.state===(actionStates.parry||actionStates.stunned||actionStates.chg1)){
+                                        dLogElem.querySelector('.mid-line').innerHTML+=`${brOrNot[i]}${tmpPLY.name} was prepared for an attack, but none occured!`
+                                        
                                     }
                                     break;
                                 case actionStates.shldBash:
-                                    let dmg = randInt(30,60);
+
+                                    dLogElem.querySelector('.mid-line').innerHTML+=`${brOrNot[i]}${tmpPLY.name} bashed ${tmpNME.name} with their sheild!`;
+                                    
+                                    let dmgb = randInt(30,60);
+                                    let recoil = Math.round(dmgb/2);
+                                    
+                                    if(tmpNME.state===actionStates.parry){
+                                        dLogElem.querySelector('.mid-line').innerHTML+=`<br><br>${tmpNME.name} was prepared for the attack!<br>`
+                                        dmg=recoil;
+                                    }else{
+                                        dLogElem.querySelector('.mid-line').innerHTML+=`<br><br>`
+                                        dmg=dmgb;
+                                    }
+
                                     tmpNME.hp.val-=dmg;
-                                    tmpPLY.hp.val-=Math.round(dmg/2);
+                                    tmpPLY.hp.val-=recoil;
+                                    
+                                    dLogElem.querySelector('.mid-line').innerHTML+=`${tmpNME.name} took ${dmg} pts of  damage!<br><br>${tmpPLY.name} is hit with ${recoil} pts of recoil.`
+
                                     break;
                                 case actionStates.stunned:
+                                    dLogElem.querySelector('.mid-line').innerHTML+=`${brOrNot[i]}${tmpPLY.name} is recovering from their disadvantage!`;
                                     break;
                             }
                         }
@@ -334,9 +357,14 @@ gameElem.addEventListener('click',(e)=>{
                                     }else{
                                     }
                                     break;
-                                case actionStates.chg1:
 
+                                case actionStates.chg1:
+                                    if(tmpNME.state===actionStates.parry){
+                                        tmpNME.state=actionStates.stunned;
+                                    }else{
+                                    }
                                     break;
+
                                 case actionStates.chg2:
 
                                     if(tmpNME.state===actionStates.parry){
@@ -344,15 +372,18 @@ gameElem.addEventListener('click',(e)=>{
                                     }else{
                                     }
                                     break;
+
                                 case actionStates.parry:
-                                    if(tmpNME.state===actionStates.parry){
+                                    if(tmpNME.state===actionStates.parry||actionStates.stunned||actionStates.chg1){
                                         tmpPLY.state=actionStates.stunned;
-                                    }else if(tmpNME.state===actionStates.chg1){
-                                        tmpPLY.state=actionStates.stunned;
+                                    }else{
+                                        
                                     }
                                     break;
+
                                 case actionStates.shldBash:
                                     break;
+
                                 case actionStates.stunned:
                                     tmpPLY.state=actionStates.idle;
                                     break;
@@ -364,6 +395,14 @@ gameElem.addEventListener('click',(e)=>{
                 playerStored.sprElem.src=playerStored.sprites[playerStored.state];
                 enemyStored.sprElem.src=enemyStored.sprites[enemyStored.state];
                 
+                for(i=0;i<2;i++){
+                    tmpPLY=[playerStored,enemyStored][i];
+                    if(tmpPLY.state===actionStates.stunned){
+                        tmpPLY.hp.cndElem.innerHTML='HP: ///'
+                    }else{
+                        tmpPLY.hp.cndElem.innerHTML='HP:'
+                    }
+                }
                 
                 console.log('pass dialogue')
             }
@@ -375,7 +414,13 @@ gameElem.addEventListener('click',(e)=>{
         }
         if(turnState<3){
             dLogElem.querySelector('.first-line').innerHTML=`Round ${roundNumber}. It's ${'P'+turnState}'s turn.`;
-            dLogElem.querySelector('.mid-line').innerHTML="select your move."
+            // if(playerStored.state===actionStates.stunned){
+            //     dLogElem.querySelector('.mid-line').innerHTML="You're at a disadvantage!<br><br>You cannot move!"
+            // }else if(playerStored.state===actionStates.chg1){
+            //     dLogElem.querySelector('.mid-line').innerHTML="You're almost ready to unleash your attack!"
+            // }else{
+                dLogElem.querySelector('.mid-line').innerHTML="select your move."
+            // }
         }else{
             dLogElem.querySelector('.first-line').innerHTML=''
             dLogElem.querySelector('.first-line').innerHTML=`round ${roundNumber} start`;
@@ -386,7 +431,7 @@ gameElem.addEventListener('click',(e)=>{
                     tmpPLY=[playerStored,enemyStored][i]
                     tmpNME=[enemyStored,playerStored][i]
                     switch(tmpPLY.state){
-                        case actionStates.stunned:tmpPLY.     state=actionStates.stunned
+                        case actionStates.stunned:tmpPLY.state=actionStates.stunned
                             break;
                         case actionStates.chg1:
                             break;
