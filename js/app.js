@@ -288,12 +288,15 @@ gameElem.addEventListener('click',(e)=>{
                             tmpPLY=[enemyStored,playerStored][i]
                             switch(tmpPLY.state){
                                 case actionStates.atk:
+                                    dLogElem.querySelector('.mid-line').innerHTML+=`${brOrNot[i]}${tmpPLY.name} slashed at ${tmpNME.name} with their sword.`;
                                     if(tmpNME.state===actionStates.parry){
+                                        dLogElem.querySelector('.mid-line').innerHTML+=`<br><br>${tmpNME.name} was prepared for the attack!`
                                         dmg=randInt(7.5,15);
                                     }else{
-                                        dmg=randInt(15,30);3
+                                        dmg=randInt(15,30);
                                     }
                                     tmpNME.hp.val-=dmg
+                                    dLogElem.querySelector('.mid-line').innerHTML+=`<br><br>${tmpNME.name} took ${dmg} pts of  damage!`
                                     break;
                                 case actionStates.chg1:
                                     dLogElem.querySelector('.mid-line').innerHTML+=`${brOrNot[i]}${tmpPLY.name} began preparing a mighty blow...`;
@@ -308,6 +311,7 @@ gameElem.addEventListener('click',(e)=>{
                                         dmg=randInt(30,60);
                                     }
                                     tmpNME.hp.val-=dmg
+                                    dLogElem.querySelector('.mid-line').innerHTML+=`${tmpNME.name} took ${dmg} pts of  damage!`
                                     break;
                                 case actionStates.parry:
                                     
@@ -325,7 +329,7 @@ gameElem.addEventListener('click',(e)=>{
                                     let recoil = Math.round(dmgb/2);
                                     
                                     if(tmpNME.state===actionStates.parry){
-                                        dLogElem.querySelector('.mid-line').innerHTML+=`<br><br>${tmpNME.name} was prepared for the attack!<br>`
+                                        dLogElem.querySelector('.mid-line').innerHTML+=`<br><br>${tmpNME.name} was prepared for the attack!<br><br>`
                                         dmg=recoil;
                                     }else{
                                         dLogElem.querySelector('.mid-line').innerHTML+=`<br><br>`
@@ -359,10 +363,7 @@ gameElem.addEventListener('click',(e)=>{
                                     break;
 
                                 case actionStates.chg1:
-                                    if(tmpNME.state===actionStates.parry){
-                                        tmpNME.state=actionStates.stunned;
-                                    }else{
-                                    }
+                                    
                                     break;
 
                                 case actionStates.chg2:
@@ -374,7 +375,7 @@ gameElem.addEventListener('click',(e)=>{
                                     break;
 
                                 case actionStates.parry:
-                                    if(tmpNME.state===actionStates.parry||actionStates.stunned||actionStates.chg1){
+                                    if(tmpNME.state===(actionStates.parry||actionStates.chg1)){
                                         tmpPLY.state=actionStates.stunned;
                                     }else{
                                         
@@ -382,6 +383,10 @@ gameElem.addEventListener('click',(e)=>{
                                     break;
 
                                 case actionStates.shldBash:
+                                    if(tmpNME.state===actionStates.parry){
+                                        tmpPLY.state=actionStates.stunned;
+                                    }else{
+                                    }
                                     break;
 
                                 case actionStates.stunned:
