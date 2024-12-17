@@ -7,6 +7,7 @@ const playerElems = {
     p2: document.querySelector('#p2-box'),
 }
 
+    
 let roundNumber=1;
 let gameNum=1;
 
@@ -63,6 +64,7 @@ const pData = {
         name:'P1',
         state: actionStates.idle,
         wins: 0,
+        winElem: gameElem.querySelector('#p1-score'),
         stunNext: 0,
     },
     p2:{
@@ -88,6 +90,7 @@ const pData = {
         name:'P2',
         state: actionStates.idle,
         wins: 0,
+        winElem: gameElem.querySelector('#p2-score'),
         stunNext: 0,
     },
 }
@@ -481,13 +484,13 @@ gameElem.addEventListener('click',(e)=>{
             pData.p1.state=actionStates.defeat;
             pData.p2.state=actionStates.victory;
             victoryTxt.innerHTML='Player 2 Wins!!!';
-            pData.p2.wins++
+            pData.p2.wins=pData.p2.wins+1
         }else if(pData.p2.hp.val<=0&&pData.p1.hp.val>0){
             pData.p2.hp.val=0;
             pData.p1.state=actionStates.victory;
             pData.p2.state=actionStates.defeat;
             victoryTxt.innerHTML='Player 1 Wins!!!';
-            pData.p1.wins++
+            pData.p1.wins=pData.p1.wins+1
         }else if(pData.p2.hp.val<=0&&pData.p1.hp.val<=0){
             pData.p1.hp.val=0;
             pData.p2.hp.val=0;
@@ -512,5 +515,11 @@ gameElem.addEventListener('click',(e)=>{
     pData.p2.hp.numElem.innerHTML=`${(pData.p2.hp.val)}/400`;
     
     console.log(pData.p1.hp.barElem.style.width);
+    console.log(pData.p2.hp.barElem.style.width);
     
+    console.log(pData.p1.wins);
+    console.log(pData.p2.wins);
+    
+    pData.p1.winElem.innerHTML=`${pData.p1.wins}`
+    pData.p2.winElem.innerHTML=`${pData.p2.wins}`
 });

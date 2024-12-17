@@ -36,6 +36,33 @@ div {
     padding: 20px 0;
 }
 
+div.score {
+    position: absolute;
+    flex-direction: column;
+    transform: translate(0, -28px);
+    height: 38px;
+    width: 160px;
+    justify-content: center;
+    align-items: center;
+    border-width: 4px;
+    border-color: rgb(171, 161, 132) rgb(171, 161, 132) rgb(55, 50, 34) rgb(55, 50, 34);
+    background-color: rgb(134, 119, 100);
+        justify-content: space-between;
+    h5 {
+        margin: 0;
+    }
+    p {
+        display: flex;
+        margin: 0;
+        flex-direction: row;
+        justify-content: space-between;
+        span {
+            margin: 2px 12px;
+        }
+    }
+}
+
+
 .player-box {
     flex-direction: column;
     margin: 0 20px;
