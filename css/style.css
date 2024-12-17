@@ -55,10 +55,18 @@ div.score {
         display: flex;
         margin: 0;
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: center;
         span {
             margin: 0 28px;
             transform: translate(0, -2px);
+        }
+        #p1-score {
+            position: absolute;
+            transform: translate(-40px, 0);
+        }
+        #p2-score {
+            position: absolute;
+            transform: translate(40px, 0);
         }
     }
 }
