@@ -57,7 +57,8 @@ div.score {
         flex-direction: row;
         justify-content: space-between;
         span {
-            margin: 2px 12px;
+            margin: 0 28px;
+            transform: translate(0, -2px);
         }
     }
 }
