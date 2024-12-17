@@ -63,6 +63,7 @@ const pData = {
         name:'P1',
         state: actionStates.idle,
         wins: 0,
+        stunNext: 0,
     },
     p2:{
         sprElem: document.querySelector('#p2'),
@@ -87,6 +88,7 @@ const pData = {
         name:'P2',
         state: actionStates.idle,
         wins: 0,
+        stunNext: 0,
     },
 }
 
@@ -192,6 +194,7 @@ gameElem.addEventListener('click',(e)=>{
         }else{
 
             
+            
                 
             
 
@@ -218,6 +221,8 @@ gameElem.addEventListener('click',(e)=>{
                 }else if(turnState===2){
                     playerTurn=1
                 }
+                playerStored = pData[players[playerTurn]];
+                enemyStored = pData[players[Math.abs(playerTurn-1)]];
                 switch(playerStored.state){
                     case actionStates.stunned:
                         dLogElem.setAttribute('class',dLogClass.animate);
@@ -306,7 +311,9 @@ gameElem.addEventListener('click',(e)=>{
                                     dLogElem.querySelector('.mid-line').innerHTML+=`${brOrNot[i]}${tmpPLY.name} unleashed a Greatslash!!`;
 
                                     if(tmpNME.state===actionStates.parry){
+                                        dLogElem.querySelector('.mid-line').innerHTML+=`<br><br>${tmpNME.name} was prepared for the attack!<br><br>`
                                         dmg=randInt(15,30);
+                                        tmpPLY.stunNext=1;
                                     }else{
                                         dmg=randInt(30,60);
                                     }
@@ -317,8 +324,8 @@ gameElem.addEventListener('click',(e)=>{
                                     
                                     
                                     if(tmpNME.state===(actionStates.parry||actionStates.stunned||actionStates.chg1)){
-                                        dLogElem.querySelector('.mid-line').innerHTML+=`${brOrNot[i]}${tmpPLY.name} was prepared for an attack, but none occured!`
-                                        
+                                        dLogElem.querySelector('.mid-line').innerHTML+=`${brOrNot[i]}${tmpPLY.name} was prepared for an attack, but none occured!`;
+                                        tmpPLY.stunNext=1;
                                     }
                                     break;
                                 case actionStates.shldBash:
@@ -331,6 +338,7 @@ gameElem.addEventListener('click',(e)=>{
                                     if(tmpNME.state===actionStates.parry){
                                         dLogElem.querySelector('.mid-line').innerHTML+=`<br><br>${tmpNME.name} was prepared for the attack!<br><br>`
                                         dmg=recoil;
+                                        tmpPLY.stunNext=1;
                                     }else{
                                         dLogElem.querySelector('.mid-line').innerHTML+=`<br><br>`
                                         dmg=dmgb;
@@ -345,12 +353,14 @@ gameElem.addEventListener('click',(e)=>{
                                 case actionStates.stunned:
                                     dLogElem.querySelector('.mid-line').innerHTML+=`${brOrNot[i]}${tmpPLY.name} is recovering from their disadvantage!`;
                                     break;
+                                    
                             }
                         }
                         tmpPLY.sprElem.src=tmpPLY.sprites[tmpPLY.state];
                         turnState++
                         break;
                     case 4:
+                        
                         for(i=0;i<2;i++){
                             tmpPLY=[playerStored,enemyStored][i]
                             tmpNME=[enemyStored,playerStored][i]
@@ -375,8 +385,9 @@ gameElem.addEventListener('click',(e)=>{
                                     break;
 
                                 case actionStates.parry:
-                                    if(tmpNME.state===(actionStates.parry||actionStates.chg1)){
+                                    if(tmpNME.state===(actionStates.parry||actionStates.chg1||actionStates.stunned)){
                                         tmpPLY.state=actionStates.stunned;
+                                        
                                     }else{
                                         
                                     }
@@ -392,20 +403,30 @@ gameElem.addEventListener('click',(e)=>{
                                 case actionStates.stunned:
                                     tmpPLY.state=actionStates.idle;
                                     break;
+                                    
+                                
                             }
+                            if(tmpPLY.stunNext===1){
+                                tmpPLY.state=actionStates.stunned
+                            }
+                            tmpPLY.stunNext=0;
                         }
                         turnState++
                         break;
                 }
                 playerStored.sprElem.src=playerStored.sprites[playerStored.state];
                 enemyStored.sprElem.src=enemyStored.sprites[enemyStored.state];
-                
                 for(i=0;i<2;i++){
-                    tmpPLY=[playerStored,enemyStored][i];
+                    tmpPLY=[enemyStored,playerStored][i];
+                    
                     if(tmpPLY.state===actionStates.stunned){
-                        tmpPLY.hp.cndElem.innerHTML='HP: ///'
+                        tmpPLY.hp.cndElem.innerHTML='HP: ///';
+                        
+                        dLogElem.querySelector('.mid-line').innerHTML+=`<br><br>${tmpPLY.name} is at a disadvantage!`;
                     }else{
-                        tmpPLY.hp.cndElem.innerHTML='HP:'
+                        tmpPLY.hp.cndElem.innerHTML='HP:';
+                        
+                        
                     }
                 }
                 
