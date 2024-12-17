@@ -511,8 +511,8 @@ gameElem.addEventListener('click',(e)=>{
     pData.p1.hp.barElem.style.width=`${(pData.p1.hp.val/4)}%`;
     pData.p2.hp.barElem.style.width=`${(pData.p2.hp.val/4)}%`;
     
-    pData.p1.hp.numElem.innerHTML=`${(pData.p1.hp.val)}/400`;
-    pData.p2.hp.numElem.innerHTML=`${(pData.p2.hp.val)}/400`;
+    pData.p1.hp.numElem.innerHTML=`${(pData.p1.hp.val)}/400&ThinSpace;`;
+    pData.p2.hp.numElem.innerHTML=`${(pData.p2.hp.val)}/400&ThinSpace;`;
     
     console.log(pData.p1.hp.barElem.style.width);
     console.log(pData.p2.hp.barElem.style.width);
